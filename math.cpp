@@ -24,7 +24,16 @@
 
 using namespace std;
 
-bool isPrime(int toCheck)
+bool isEven(long toCheck)
+{
+    if(toCheck % 2 == 0)
+    {
+        return true;
+    }
+    return false;
+}
+
+bool isPrime(long toCheck)
 {
     //really needs to be improved
     if(toCheck < 2)
@@ -36,8 +45,8 @@ bool isPrime(int toCheck)
         return true;
     }
 
-    int upTo = ceil(sqrt(toCheck));
-    for(int i = 2; i < upTo + 1; ++i)
+    unsigned int upTo = ceil(sqrt(toCheck));//needs to go up to 3.1 billion
+    for(unsigned int i = 2; i < upTo + 1; ++i)
     {
         if(toCheck % i == 0)
         {
@@ -47,10 +56,10 @@ bool isPrime(int toCheck)
     return true;
 }
 
-vector<int> factor(int toFactor)
+vector<long> factor(long toFactor)
 {
-    vector<int> factors;
-    for(int i = 2; i < ceil(sqrt(toFactor)) + 1; ++i)
+    vector<long> factors;
+    for(unsigned int i = 2; i < ceil(sqrt(toFactor)) + 1; ++i)
     {
         if(isPrime(toFactor))
         {
@@ -67,7 +76,7 @@ vector<int> factor(int toFactor)
     return factors;
 }
 
-string decToHex(int toConvert)
+string decToHex(long toConvert)
 {
     string hexValue;
     if(toConvert == 0)//handling 0, don't want to return an empty string
@@ -144,4 +153,105 @@ string decToHex(int toConvert)
 
     reverse(hexValue.begin(),hexValue.end());//should be fixed
     return hexValue;
+}
+
+string decToBin(long toConvert)
+{
+    string toReturn;
+
+    if(toConvert == 0)//handling 0, don't want to return an empty string
+    {
+        toReturn.append("0");
+        return toReturn;
+    }
+
+    else if(toConvert < 0)
+    {
+        toReturn.append("-");
+        toConvert = toConvert/-1;
+    }
+
+    int temp; //used for holding remainder
+    while(toConvert != 0)
+    {
+        temp = toConvert % 2;
+        if(!temp)
+        {
+            toReturn.append("0");
+        }
+        else
+        {
+            toReturn.append("1");
+        }
+
+        toConvert /= 2;
+    }
+        
+    reverse(toReturn.begin(),toReturn.end());//reversing order
+    return toReturn;
+}
+
+long sum(vector<long> numbers)
+{
+    long toReturn = 0;
+    for(int i = 0; i < numbers.size(); ++i)
+    {
+        toReturn += numbers.at(i);
+    }
+    return toReturn;
+}
+
+double average(vector<long> numbers)
+{
+    double toReturn = sum(numbers);
+    toReturn /= numbers.size();
+    return toReturn;
+}
+
+double standardDeviation(vector<long> numbers)
+{
+    double toReturn = average(numbers);
+    for(int i = 0; i < numbers.size(); ++i)
+    {
+        numbers.at(i) = pow(numbers.at(i)-toReturn,2);//squaring initial vlaue minus average
+    }
+    toReturn = sqrt(average(numbers));
+    return toReturn;
+}
+
+vector<long> bubbleSort(vector<long> toSort)
+{
+    bool inOrder = true;
+    int size = toSort.size();
+    int temp;
+    do
+    {
+        inOrder = true;
+        for(int i = 0; i < size-1; i++)
+        {
+            if(toSort.at(i)>toSort.at(i+1))
+            {
+                inOrder = false;
+                temp = toSort.at(i);
+                toSort[i] = toSort.at(i+1);
+                toSort[i+1] = temp;
+            }
+        }
+    }
+    while(!inOrder);
+    return toSort;
+}
+
+long median(vector<long> numbers)
+{
+    numbers = bubbleSort(numbers);
+    int size = numbers.size();
+    if(size % 2 == 0)
+    {
+        return((numbers.at(size/2 - 1) + numbers.at(size/2))/2);
+    }
+    else
+    {
+        return(numbers.at(size/2));
+    }
 }

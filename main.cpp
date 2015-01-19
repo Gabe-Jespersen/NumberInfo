@@ -17,65 +17,49 @@
 
 #include <iostream>
 #include <string>
+#include <sstream>
 #include <vector>
 
-#include "math.h"
+#include "output.h"
 
 using namespace std;
 
 int main(int argc, char **argv)
 {
-    int number;
-    cout << "Enter a number you want to know about\n";
-    cin >> number;
+    string input;
+    cout << "Enter numbers you want to know about\n";
+    cin >> input;
     cout << endl;
+    
+    vector<long> numbers;
+    stringstream stream(input);
 
-    cout << number << " is ";
-    if(number % 2 == 0)
-    {
-        cout << "even\n";
-    }
-    else
-    {
-        cout << "odd\n";
-    }
+    int n;
 
-    bool numberPrime = isPrime(number);
-    if(numberPrime)
+    while(stream >> n)
     {
-        cout << number << " is prime\n";
-    }
-    else
-    {
-        cout << number << " is not prime\n";//covering -1-1
-    }
+        numbers.push_back(n);
 
-    if(!numberPrime && (number < -2 || number > 2))
-    {
-        vector<int> factors = factor(number);
-        int numberOfFactors = factors.size();
-
-        cout << "Prime factors of " << number << " are ";
-
-        //print factors from vector
-        if(numberOfFactors > 2)
+        if(stream.peek() == ',' || stream.peek() == ' ')
         {
-            for(int i = 0; i < numberOfFactors - 1; ++i)
-            {
-                cout << factors.at(i) << ", ";
-            }
+            stream.ignore();
         }
-        else
-        {
-            cout << factors.at(0) << " ";
-        }
-        //print last one
-        cout << "and " << factors.at(numberOfFactors-1) << endl;
     }
 
-    string hexNumber = decToHex(number);
-    cout << number << " in hexadecimal is " << hexNumber << endl;
+    /*
+    for(int i = 0; i < numbers.size(); ++i)
+    {
+        cout << numbers.at(i) << " ";
+    }
+    */
 
-    cout << endl;
+    if(numbers.size() == 1)
+    {
+        singleNumber(numbers.at(0));
+    }
+    else 
+    {
+        multiNumber(numbers);
+    }
     return 0;
 }

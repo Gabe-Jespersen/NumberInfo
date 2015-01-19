@@ -21,8 +21,15 @@
 #ifndef MATH_CPP
 #define MATH_CPP
 
-bool isPrime(int);
-std::vector<int> factor(int);
-std::string decToHex(int);
+bool isEven(long);
+bool isPrime(long);
+std::vector<long> factor(long);
+std::string decToHex(long);
+std::string decToBin(long);
+long sum(std::vector<long>);
+double average(std::vector<long>);
+double standardDeviation(std::vector<long>);
+std::vector<long> bubbleSort(std::vector<long>);
+long median(std::vector<long>);
 
 #endif

@@ -16,6 +16,7 @@
  */
 
 #include <iostream>
+#include <cstdlib>
 #include <string>
 #include <sstream>
 #include <vector>
@@ -36,11 +37,11 @@ int main(int argc, char **argv)
 
     int n;
 
-    while(stream >> n)
+    while(stream >> n) //reading input
     {
         numbers.push_back(n);
 
-        if(stream.peek() == ',' || stream.peek() == ' ')
+        while(stream.peek() == ',' || stream.peek() == ' ')
         {
             stream.ignore();
         }
@@ -53,11 +54,15 @@ int main(int argc, char **argv)
     }
     */
 
-    if(numbers.size() == 1)
+    if(numbers.size() < 1) // if nothing is entered
+    {
+        exit(1);
+    }
+    else if(numbers.size() == 1) // if one number is entered
     {
         singleNumber(numbers.at(0));
     }
-    else 
+    else // if multiple numbers are entered
     {
         multiNumber(numbers);
     }

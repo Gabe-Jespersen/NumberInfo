@@ -31,5 +31,6 @@ double average(std::vector<long>);
 double standardDeviation(std::vector<long>);
 std::vector<long> bubbleSort(std::vector<long>);
 long median(std::vector<long>);
+double rootMeanSquare(std::vector<long>);
 
 #endif

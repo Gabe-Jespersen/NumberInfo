@@ -83,5 +83,6 @@ void multiNumber(vector<long> numbers)
     cout << "Average: " << average(numbers) << endl;
     cout << "Median: " << median(numbers) << endl;
     cout << "Standard Deviation: " << standardDeviation(numbers) << endl;
+    cout << "Root Mean Square: " << rootMeanSquare(numbers) << endl;
     return;
 }

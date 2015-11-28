@@ -19,6 +19,10 @@
 #include <algorithm>
 #include <cmath>
 #include <string>
+#include <sstream>
+//temp
+#include <iostream>
+
 
 #include "math.h"
 
@@ -59,6 +63,12 @@ bool isPrime(long toCheck)
 vector<long> factor(long toFactor)
 {
     vector<long> factors;
+
+    if(toFactor < 0)
+    {
+        factors.push_back(-1);
+    }
+
     for(unsigned int i = 2; i < ceil(sqrt(toFactor)) + 1; ++i)
     {
         if(isPrime(toFactor))
@@ -254,4 +264,20 @@ long median(vector<long> numbers)
     {
         return(numbers.at(size/2));
     }
+}
+
+double rootMeanSquare(vector<long> numbers)
+{
+    double sqrtSumOfSquares = 0;
+    for(int i = 0; i < numbers.size(); ++i)
+    {
+        sqrtSumOfSquares += pow(numbers.at(i),2);
+    }
+    sqrtSumOfSquares = sqrt(sqrtSumOfSquares);
+
+    double sqrtOfCount = sqrt(numbers.size());
+    
+    double answer = sqrtSumOfSquares/sqrtOfCount;
+
+    return answer;
 }

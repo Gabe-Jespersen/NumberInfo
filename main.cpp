@@ -22,6 +22,7 @@
 #include <vector>
 
 #include "output.h"
+#include "parse.h"
 
 using namespace std;
 

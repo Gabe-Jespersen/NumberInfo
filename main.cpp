@@ -27,26 +27,38 @@ using namespace std;
 
 int main(int argc, char **argv)
 {
-    string input;
-    cout << "Enter numbers you want to know about\n";
-    cin >> input;
-    cout << endl;
-    
     vector<long> numbers;
-    stringstream stream(input);
+    string input;
 
-    int n;
-
-    while(stream >> n) //reading input
+    if(argc == 2)
     {
-        numbers.push_back(n);
-
-        while(stream.peek() == ',' || stream.peek() == ' ')
+        input = parse(argc, argv);
+        if(exists(input))
         {
-            stream.ignore();
+            numbers = readFile(input);
         }
     }
+    else
+    {
+        cout << "Enter numbers you want to know about\n";
+        cin >> input;
+        cout << endl;
+        
+        stringstream stream(input);
 
+        int n;
+
+        while(stream >> n) //reading input
+        {
+            numbers.push_back(n);
+
+            while(stream.peek() == ',' || stream.peek() == ' ')
+            {
+                stream.ignore();
+            }
+        }
+    }
+    
     /*
     for(int i = 0; i < numbers.size(); ++i)
     {

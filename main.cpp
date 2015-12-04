@@ -26,14 +26,14 @@
 
 using namespace std;
 
-int main(int argc, char **argv)
+int main(int argc, char** argv)
 {
     vector<long> numbers;
     string input;
 
     if(argc == 2)
     {
-        input = parse(argc, argv);
+        input = parseFile(argc, argv);
         if(exists(input))
         {
             numbers = readFile(input);

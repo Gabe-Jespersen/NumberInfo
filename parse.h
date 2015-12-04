@@ -17,12 +17,11 @@
  */
 
 #include <string>
-#include <vector>
 
-#ifndef PARSE_H
-#define PARSE_H
+#ifndef PARSE_CPP
+#define PARSE_CPP
 
-std::string parse(int, char**);
+std::string parseFile(int,char**);
 bool exists(std::string);
 std::vector<long> readFile(std::string);
 

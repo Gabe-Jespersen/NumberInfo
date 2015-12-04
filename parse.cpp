@@ -29,7 +29,7 @@
 
 using namespace std;
 
-string parse(int argc, char** argv)
+string parseFile(int argc, char** argv)
 {
     if(argc < 2)
     {
@@ -49,6 +49,6 @@ bool exists(string toCheck)
 
 vector<long> readFile(string toRead)
 {
-    ifstream is(toRead);
-
+    cout << "dicks" << endl;
+    return {1};
 }

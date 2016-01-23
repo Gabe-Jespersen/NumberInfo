@@ -5,7 +5,7 @@ EXECUTABLE = numinfo
 all: numinfo
 
 numinfo: main.o math.o output.o parse.o
-	$(CC) $(CFLAGS) main.o output.o math.o -o $(EXECUTABLE)
+	$(CC) $(CFLAGS) main.o output.o math.o parse.o -o $(EXECUTABLE)
 
 main.o: main.cpp output.h parse.h
 	$(CC) $(CFLAGS) -c main.cpp

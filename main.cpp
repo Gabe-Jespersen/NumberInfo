@@ -31,6 +31,7 @@ int main(int argc, char** argv)
     vector<long> numbers;
     string input;
 
+    /*
     if(argc == 2)
     {
         input = parseFile(argc, argv);
@@ -41,6 +42,7 @@ int main(int argc, char** argv)
     }
     else
     {
+    */
         cout << "Enter numbers you want to know about\n";
         cin >> input;
         cout << endl;
@@ -58,7 +60,7 @@ int main(int argc, char** argv)
                 stream.ignore();
             }
         }
-    }
+    //}
     
     /*
     for(int i = 0; i < numbers.size(); ++i)
@@ -79,5 +81,8 @@ int main(int argc, char** argv)
     {
         multiNumber(numbers);
     }
+
+    cout << endl;
+
     return 0;
 }

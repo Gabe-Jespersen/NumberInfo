@@ -33,10 +33,16 @@ int main(int argc, char** argv)
 
     if(argc == 2)
     {
-        input = parse(argc, argv);
+        input = parseFile(argc, argv);
+        cout << "penis\n";
         if(exists(input))
         {
+            cout << "penis\n";
             numbers = readFile(input);
+        }
+        else
+        {
+            cout << "File does not exit\n";
         }
     }
     else

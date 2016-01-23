@@ -21,7 +21,7 @@
 #ifndef PARSE_CPP
 #define PARSE_CPP
 
-std::string parseFile(int,char**);
+std::string parse(int,char**);
 bool exists(std::string);
 std::vector<long> readFile(std::string);
 

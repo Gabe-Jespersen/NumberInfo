@@ -31,10 +31,9 @@ int main(int argc, char** argv)
     vector<long> numbers;
     string input;
 
-    /*
     if(argc == 2)
     {
-        input = parseFile(argc, argv);
+        input = parse(argc, argv);
         if(exists(input))
         {
             numbers = readFile(input);
@@ -42,7 +41,6 @@ int main(int argc, char** argv)
     }
     else
     {
-    */
         cout << "Enter numbers you want to know about\n";
         cin >> input;
         cout << endl;
@@ -60,7 +58,7 @@ int main(int argc, char** argv)
                 stream.ignore();
             }
         }
-    //}
+    }
     
     /*
     for(int i = 0; i < numbers.size(); ++i)

@@ -29,7 +29,7 @@
 
 using namespace std;
 
-string parseFile(int argc, char** argv)
+string parse(int argc, char** argv)
 {
     if(argc < 2)
     {

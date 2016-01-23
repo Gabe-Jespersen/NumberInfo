@@ -10,14 +10,15 @@ numinfo: main.o math.o output.o parse.o
 main.o: main.cpp output.h parse.h
 	$(CC) $(CFLAGS) -c main.cpp
 
+parse.o: parse.cpp parse.h
+	$(CC) $(CFLAGS) -c parse.cpp
+
 output.o: output.cpp output.h math.h
 	$(CC) $(CFLAGS) -c output.cpp
 
 math.o: math.cpp math.h
 	$(CC) $(CFLAGS) -c math.cpp
 
-parse.o: parse.cpp parse.h
-	$(CC) $(CFLAGS) -c parse.cpp
 
 clean:
 	rm -rf *.o $(EXECUTABLE)
